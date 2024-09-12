@@ -20,15 +20,15 @@ $conn->close();
 <body>
     <div class="container">
         <div class="box">
-            <h1><?php echo htmlspecialchars($personal_info['name']); ?></h1>
-            <p><strong>Position:</strong> <?php echo htmlspecialchars($personal_info['position']); ?></p>
+            <h1><?php echo $personal_info['name']; ?></h1>
+            <p><strong>Position:</strong> <?php echo $personal_info['position']; ?></p>
         </div>
         <div class="box2">
-            <p><strong>Phone:</strong> <?php echo htmlspecialchars($personal_info['phone']); ?></p>
-            <p><strong>Email:</strong> <?php echo htmlspecialchars($personal_info['email']); ?></p>
-            <p><strong>Address:</strong> <?php echo htmlspecialchars($personal_info['address']); ?></p>
+            <p><strong>Phone:</strong> <?php echo $personal_info['phone']; ?></p>
+            <p><strong>Email:</strong> <?php echo $personal_info['email']; ?></p>
+            <p><strong>Address:</strong> <?php echo $personal_info['address']; ?></p>
             <h2>About Me</h2>
-            <p><?php echo htmlspecialchars($personal_info['about']); ?></p>
+            <p><?php echo $personal_info['about']; ?></p>
         </div>
     </div>
 </body>
