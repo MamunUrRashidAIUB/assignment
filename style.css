@@ -37,3 +37,20 @@ strong {
 h2 {
     color: #fff; 
 }
+/* Experience Section Styling */
+.experience ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.experience li {
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.experience h2 {
+    margin-top: 20px;
+}
