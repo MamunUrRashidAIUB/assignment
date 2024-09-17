@@ -27,40 +27,40 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title><?php echo $personal_info['name']; ?> - Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- Personal Info Section -->
-        <div class="box">
-            <h1><?php echo $personal_info['name']; ?></h1>
-            <p><strong>Position:</strong> <?php echo $personal_info['position']; ?></p>
+        <!-- Left Column -->
+        <div class="left-column">
+            <img src="path/to/profile-picture.jpg" alt="Profile Picture">
+            <h2>EDUCATION</h2>
+            <!-- Add education details here -->
+            <h2>REFERENCE</h2>
+            <!-- Add references here -->
+            <div class="contact-info">
+                <p>Phone: <?php echo $personal_info['phone']; ?></p>
+                <p>Email: <?php echo $personal_info['email']; ?></p>
+                <p>Address: <?php echo $personal_info['address']; ?></p>
+            </div>
         </div>
         
-        <!-- Additional Info Section -->
-        <div class="box2">
-            <p><strong>Phone:</strong> <?php echo $personal_info['phone']; ?></p>
-            <p><strong>Email:</strong> <?php echo $personal_info['email']; ?></p>
-            <p><strong>Address:</strong> <?php echo $personal_info['address']; ?></p>
-            <h2>About Me</h2>
+        <!-- Right Column -->
+        <div class="right-column">
+            <div class="header">
+                <h1><?php echo $personal_info['name']; ?></h1>
+                <p><?php echo $personal_info['position']; ?></p>
+            </div>
+            <h2>ABOUT ME</h2>
             <p><?php echo $personal_info['about']; ?></p>
-        </div>
-
-        <!-- Experience Section -->
-        <div class="experience">
-            <h2>Experience</h2>
-            <?php if (!empty($experience_list)): ?>
-                <ul>
-                    <?php foreach ($experience_list as $experience): ?>
-                        <li>
-                            <p><strong><?php echo $experience['job_position']; ?></strong> at <?php echo $experience['company_name']; ?> (<?php echo $experience['start_year']; ?> - <?php echo $experience['end_year']; ?>)</p>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else: ?>
-                <p>No experience available.</p>
-            <?php endif; ?>
+            <h2>WORK EXPERIENCE</h2>
+            <?php foreach ($experience_list as $experience) : ?>
+                <h3><?php echo $experience['job_position']; ?> - <?php echo $experience['company_name']; ?></h3>
+                <p><?php echo $experience['description']; ?></p>
+            <?php endforeach; ?>
+            <h2>SOFTWARE SKILLS</h2>
+            <!-- Add software skills here -->
         </div>
     </div>
 </body>
