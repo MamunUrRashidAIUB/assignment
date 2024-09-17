@@ -41,7 +41,7 @@ body {
 }
 
 img {
-    width: 100%;
+    width: 70%;
     border-radius: 50%;
 }
 
@@ -64,3 +64,4 @@ h3 {
     background-color: #f1c40f;
     height: 10px;
 }
+

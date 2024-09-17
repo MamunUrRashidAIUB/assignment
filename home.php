@@ -19,6 +19,25 @@ if ($experience_result->num_rows > 0) {
         $experience_list[] = $row;
     }
 }
+// Fetch education information
+$education_sql = "SELECT * FROM education";
+$education_result = $conn->query($education_sql);
+$education_list = [];
+if ($education_result->num_rows > 0) {
+    while ($row = $education_result->fetch_assoc()) {
+        $education_list[] = $row;
+    }
+}
+//fetch reference information
+$reference_sql="SELECT *FROM reference";
+$reference_result=$conn->query($reference_sql);
+$reference_list=[];
+if ($reference_result->num_rows > 0) {
+    while ($row = $reference_result->fetch_assoc()) {
+        $reference_list[] = $row;
+    }
+}
+
 
 $conn->close();
 ?>
@@ -34,13 +53,28 @@ $conn->close();
     <div class="container">
         <!-- Left Column -->
         <div class="left-column">
-            <img src="path/to/profile-picture.jpg" alt="Profile Picture">
+            <img src="me.jpeg" alt="Profile Picture">
             <h2>EDUCATION</h2>
-            <!-- Add education details here -->
+            <?php foreach ($education_list as $education) : ?>
+                <div class="education-entry">
+                    <h3><?php echo $education['degree']; ?></h3>
+                    <p><?php echo $education['university_name']; ?></p>
+                    <p> Graduation year : <?php echo $education['year']; ?></p>
+                </div>
+            <?php endforeach; ?>
             <h2>REFERENCE</h2>
-            <!-- Add references here -->
+<?php foreach ($reference_list as $reference) : ?>
+    <div class="reference-entry">
+        <p><strong><?php echo $reference['name']; ?></strong></p>
+        <p><?php echo $reference['position']; ?> at <?php echo $reference['company name']; ?></p>
+        <p>Phone: <?php echo $reference['number']; ?></p>
+    </div>
+<?php endforeach; ?>
+
+             <h2>Contacts
+             </h2>
             <div class="contact-info">
-                <p>Phone: <?php echo $personal_info['phone']; ?></p>
+                <p> <?php echo $personal_info['name']; ?></p>
                 <p>Email: <?php echo $personal_info['email']; ?></p>
                 <p>Address: <?php echo $personal_info['address']; ?></p>
             </div>
@@ -57,10 +91,16 @@ $conn->close();
             <h2>WORK EXPERIENCE</h2>
             <?php foreach ($experience_list as $experience) : ?>
                 <h3><?php echo $experience['job_position']; ?> - <?php echo $experience['company_name']; ?></h3>
-                <p><?php echo $experience['description']; ?></p>
+                <h3>
+                  <?php echo $experience['start_year']; ?> - 
+    <?php echo $experience['end_year'] ? $experience['end_year'] : 'Present'; ?>
+</h3>
+                <p><?php echo $experience['details']; ?></p>
+        
+
+             
             <?php endforeach; ?>
-            <h2>SOFTWARE SKILLS</h2>
-            <!-- Add software skills here -->
+           
         </div>
     </div>
 </body>
